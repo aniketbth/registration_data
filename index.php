@@ -1,13 +1,124 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>home.in</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="ui/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="ui/css/style.css">
 </head>
 <body>
-<p>homepage</p>
-<button onclick="window.location.href='register/index.php'" type="submit">Register Here</button>
-</body>
+
+    <div class="main">
+
+        <!-- Sign up form -->
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Sign up</h2>
+
+                        <form method="POST" class="register-form" enctype="multipart/form-data">
+
+                            <div class="form-group">
+                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="username" id="name" placeholder="Your Name"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                <input type="email" name="useremail" id="email" placeholder="Your Email"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="pass"><i class="zmdi zmdi-phone"></i></label>
+                                <input type="password" name="password" id="pass" placeholder="Contact"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                                <input type="password" name="re_pass" id="re_pass" placeholder="Your Password"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="re-pass"><i class="zmdi zmdi-format-strikethrough"></i></label>
+                                <input type="date" name="dateofBirth" id="re_pass" placeholder="Your Password"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="re-pass"><i class="zmdi zmdi-time-countdown"></i></label>
+                                <input type="text" name="address" id="re_pass" placeholder="Address"/>
+                            </div>
+
+                             <div class="form-group">
+                                <label for="re-pass"><i class="zmdi zmdi-panorama-horizontal"></i></label>
+                                <input type="text" name="re_pass" id="re_pass" placeholder="Employee Code"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="re-pass"><i class="zmdi zmdi-collection-image-o"></i></label>
+                                <input type="file" name="image" id="re_pass" placeholder="Employee Code"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="re-pass"><i class="zmdi zmdi-panorama-horizontal"></i></label>
+                                <input type="text" name="re_pass" id="re_pass" placeholder="State Code"/>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="re-pass"><i class="zmdi zmdi-panorama-horizontal"></i></label>
+                                <input type="text" name="re_pass" id="re_pass" placeholder="Country Code"/>
+                            </div>
+
+
+                            <div class="form-group">
+                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                                <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
+                            </div>
+
+
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="signup-image">
+                        <figure><img src="ui/images/signup-image.jpg" alt="sing up image"></figure>
+                        <a href="#" class="signup-image-link">I am already member</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+      
+
+    </div> 
+
+    <!-- JS -->
+    <script src="ui/vendor/jquery/jquery.min.js"></script>
+    <script src="ui/js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>
+
+
+<?php 
+
+$targetFolder = 'userimage/';
+$base_address = 'http://localhost/registration_data/';
+$orgFileName = $_FILES['image']['name'];
+$tmpFileName = $_FILES['image']['tmp_name'];
+
+if(isset($_POST['signup']))
+{
+    move_uploaded_file($tmpFileName,$targetFolder.$orgFileName);
+}
+
+
+?>
