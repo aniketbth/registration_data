@@ -1,67 +1,89 @@
 <?php
 include('config.php');
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up Form by Colorlib</title>
+<title>Login V15</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Font Icon -->
-    <link rel="stylesheet" href="ui/fonts/material-icon/css/material-design-iconic-font.min.css">
+<link rel="icon" type="image/png" href="images/icons/favicon.ico" />
 
-    <!-- Main css -->
-    <link rel="stylesheet" href="ui/css/style.css">
+<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+
+<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+
+<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+
+<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+
+<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+
+<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+
+<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+
+<link rel="stylesheet" type="text/css" href="css/util.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+
+<meta name="robots" content="noindex, follow">
 </head>
 <body>
+<div class="limiter">
+<div class="container-login100">
+<div class="wrap-login100">
+<div class="login100-form-title" style="background-image: url(images/bg-01.jpg);">
+<span class="login100-form-title-1">
+Sign In
+</span>
+</div>
+<form class="login100-form validate-form" method="POST" enctype="multipart/form-data">
 
-    <div class="main">
 
-        <!-- Sign up form -->
-        <section class="signup">
-            <div class="container">
-                <div class="signup-content">
-                    <div class="signup-form">
-                        <h2 class="form-title">Sign up</h2>
+<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+<span class="label-input100">Username</span>
+<input class="input100" type="text" name="username" placeholder="Enter username">
+<span class="focus-input100"></span>
+</div>
 
-                        <form method="POST" class="register-form" enctype="multipart/form-data">
 
-                            <div class="form-group">
-                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="username"  placeholder="Your Name"/>
-                            </div>
+<div class="wrap-input100 validate-input m-b-18" data-validate="Password is required">
+<span class="label-input100">Password</span>
+<input class="input100" type="password" name="pass" placeholder="Enter password">
+<span class="focus-input100"></span>
+</div>
 
-                            <div class="form-group">
-                                <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                <input type="email" name="email"  placeholder="Enter Email"/>
-                            </div>
 
-                            <div class="form-group">
-                                <label for="number"><i class="zmdi zmdi-phone"></i></label>
-                                <input type="number" name="Cnumber" placeholder="Enter your Contact no."/>
-                            </div>
+<div class="wrap-input100 validate-input m-b-18" data-validate="Password is required">
+<span class="label-input100">Password</span>
+<input class="input100" type="password" name="re_pass" placeholder="Enter password again">
+<span class="focus-input100"></span>
+</div>
 
-                            <div class="form-group">
-                                <label for="pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                <input type="password" name="pass"  placeholder="Your Password"/>
-                            </div>
-                             <div class="form-group">
-                                <label for="pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                <input type="password" name="re_pass"  placeholder="Re-enter Your Password"/>
-                            </div>
 
-                            <div class="form-group">
-                                <label for="date"><i class="zmdi zmdi-format-strikethrough"></i></label>
-                                <input type="date" name="date"  placeholder="Your DOB"/>
-                            </div>
+<div class="wrap-input100 validate-input m-b-18" data-validate="Date is required">
+<span class="label-input100">DOB</span>
+<input class="input100" type="date" name="date" placeholder="Enter DOB">
+<span class="focus-input100"></span>
+</div>
 
-                            <div class="form-group">
-                                <label for="Address"><i class="zmdi zmdi-time-countdown"></i></label>
-                                <input type="text" name="Uaddress"  placeholder="Address"/>
-                            </div>
+
+<div class="wrap-input100 validate-input m-b-18" data-validate="Password is required">
+<span class="label-input100">Conatct no.</span>
+<input class="input100" type="password" name="Cnumber" placeholder="Enter contact no.">
+<span class="focus-input100"></span>
+</div>
+
+
+<div class="wrap-input100 validate-input m-b-18" data-validate="Password is required">
+<span class="label-input100">Email-Id</span>
+<input class="input100" type="email" name="email" placeholder="Enter email">
+<span class="focus-input100"></span>
+</div>
+
 
 <?php 
 
@@ -72,25 +94,34 @@ $code= substr(str_shuffle($textGenerator),0,8);
 
 ?> 
 
-                             <div class="form-group">
-                                <label for="code"><i class="zmdi zmdi-panorama-horizontal"></i></label>
-                                <input type="text" name="Ucode" value="<?php echo $code;?>" />
-                            </div>
 
-                            <div class="form-group">
-                                <label><i class="zmdi zmdi-collection-image-o"></i></label>
-                                <input type="file" name="image" accept="image/jpg,image/png,image/jpeg" />
-                            </div>
+<div class="wrap-input100 validate-input m-b-18" >
+<span class="label-input100">Unique Code</span>
+<input class="input100" type="text" readonly="" name="Ucode" value="<?php echo $code;?>" >
+<span class="focus-input100"></span>
+</div>
 
-                            <div class="form-group">
-                                <label for="code"><i class="zmdi zmdi-panorama-horizontal"></i></label>
-                                <input type="text" name="Scode"  placeholder="State Code"/>
-                            </div>
+<div class="wrap-input100 validate-input m-b-18" data-validate="Address is required">
+<span class="label-input100">Address</span>
+<input class="input100" type="address" name="Uaddress" placeholder="Enter Address">
+<span class="focus-input100"></span>
+</div>
 
-                            <div class="form-group">
-                                <label for="code"><i class="zmdi zmdi-panorama-horizontal"></i></label>
-                                <input type="text" name="Ccode"  placeholder="Country Code"/>
-                            </div> 
+
+<div class="wrap-input100 validate-input m-b-18" data-validate="Image is required">
+<span class="label-input100">User Image</span>
+<input class="input100" type="file" name="image" >
+<span class="focus-input100"></span>
+</div>
+
+
+<div class="wrap-input100 validate-input m-b-18" data-validate="State Code is required">
+<span class="label-input100">State Code</span>
+<input class="input100" type="text" name="Uaddress" placeholder="Enter State Code">
+<span class="focus-input100"></span>
+</div>
+
+
 
 
 <?php 
@@ -102,45 +133,32 @@ $otp = substr(str_shuffle($OTPgenerator),0,6);
 
 ?>
 
-                            <div class="form-group" style="display: none;">
-                                <label for="code"><i class="zmdi zmdi-panorama-horizontal"></i></label>
-                                <input type="text" name="otp" value="<?php echo $otp;?>"  />
-                            </div>
+
+<div class="wrap-input100 validate-input m-b-18" >
+<span class="label-input100">OTP</span>
+<input class="input100" type="text" readonly="" name="otp" value="<?php echo $otp;?>">
+<span class="focus-input100"></span>
+</div>
 
 
 
-                            <div class="form-group">
-                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                                <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
-                            </div>
+<div class="wrap-input100 validate-input m-b-18" data-validate="Country Code is required">
+<span class="label-input100">Country Code</span>
+<input class="input100" type="text" name="Uaddress" placeholder="Enter Country Code">
+<span class="focus-input100"></span>
+</div>
 
+<div>
+<a href="#" class="txt1">
+Forgot Password?
+</a>
+</div>
 
-                            <div class="form-group form-button">
-                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div class="signup-image">
-                        <figure><img src="ui/images/signup-image.jpg" alt="sing up image"></figure>
-                        <a href="#" class="signup-image-link">I am already member</a>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-      
-
-    </div> 
-
-    <!-- JS -->
-    <script src="ui/vendor/jquery/jquery.min.js"></script>
-    <script src="ui/js/main.js"></script>
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
-</html>
-
-
+<div class="container-login100-form-btn">
+<button class="login100-form-btn" name="signup" type="submit">
+Login
+</button>
+</div>
 <?php 
 
     $username = $_POST['username'];
@@ -164,12 +182,13 @@ $completeAddress = $base_address.$targetFolder.$orgFileName;
 
 if(isset($_POST['signup']))
 {
+      session_start();
+    $_SESSION['activeUser'] = $username;
     move_uploaded_file($tmpFileName,$targetFolder.$orgFileName);
 
     if($password == $cnfpassword)
     {
-    session_start();
-    $_SESSION['activeUser'] = $mail;
+    echo "<script>window.location.href='otpverify.php'</script>";
 
      $insertData = mysqli_query($config,"INSERT INTO sign_up(username,password,user_dob,contact_no,user_mail,user_otp,otp_status,address,employee_code,employee_img,state_code,country_code) VALUES('$username','$password','$DOB','$contact','$mail','$UserOtp','Pending','$Address','$UserCode','$completeAddress','$Scode','$Ccode')"); 
 
@@ -184,7 +203,32 @@ if(isset($_POST['signup']))
      {
       echo "<script>alert('Try again')</script>";
      }
+    }
   }
-}
-
 ?>
+
+</form>
+</div>
+</div>
+</div>
+
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+
+<script src="vendor/animsition/js/animsition.min.js"></script>
+
+<script src="vendor/bootstrap/js/popper.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<script src="vendor/select2/select2.min.js"></script>
+
+<script src="vendor/daterangepicker/moment.min.js"></script>
+<script src="vendor/daterangepicker/daterangepicker.js"></script>
+
+<script src="vendor/countdowntime/countdowntime.js"></script>
+
+<script src="js/main.js"></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+
+</body>
+</html>
