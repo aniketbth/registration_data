@@ -1,5 +1,7 @@
 <?php 
 
+session_start();
+
 include('config.php');
 
 
@@ -25,6 +27,7 @@ include('config.php');
 
 	<form method="POST"> 
 	<div class="mb-3">
+		<label>OTP for : <?php echo  $_SESSION['activeUser'];?> </label> 
 	<label  class="form-label">Username</label>
 	<input type="text" class="form-control" name="username" aria-describedby="emailHelp">
 	</div>

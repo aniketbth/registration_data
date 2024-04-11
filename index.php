@@ -1,3 +1,7 @@
+<?php
+include('config.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,53 +31,82 @@
 
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="username" id="name" placeholder="Your Name"/>
+                                <input type="text" name="username"  placeholder="Your Name"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                <input type="email" name="useremail" id="email" placeholder="Your Email"/>
+                                <input type="email" name="email"  placeholder="Enter Email"/>
                             </div>
 
                             <div class="form-group">
-                                <label for="pass"><i class="zmdi zmdi-phone"></i></label>
-                                <input type="password" name="password" id="pass" placeholder="Contact"/>
+                                <label for="number"><i class="zmdi zmdi-phone"></i></label>
+                                <input type="number" name="Cnumber" placeholder="Enter your Contact no."/>
                             </div>
 
                             <div class="form-group">
-                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                <input type="password" name="re_pass" id="re_pass" placeholder="Your Password"/>
+                                <label for="pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                                <input type="password" name="pass"  placeholder="Your Password"/>
+                            </div>
+                             <div class="form-group">
+                                <label for="pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                                <input type="password" name="re_pass"  placeholder="Re-enter Your Password"/>
                             </div>
 
                             <div class="form-group">
-                                <label for="re-pass"><i class="zmdi zmdi-format-strikethrough"></i></label>
-                                <input type="date" name="dateofBirth" id="re_pass" placeholder="Your Password"/>
+                                <label for="date"><i class="zmdi zmdi-format-strikethrough"></i></label>
+                                <input type="date" name="date"  placeholder="Your DOB"/>
                             </div>
 
                             <div class="form-group">
-                                <label for="re-pass"><i class="zmdi zmdi-time-countdown"></i></label>
-                                <input type="text" name="address" id="re_pass" placeholder="Address"/>
+                                <label for="Address"><i class="zmdi zmdi-time-countdown"></i></label>
+                                <input type="text" name="Uaddress"  placeholder="Address"/>
                             </div>
+
+<?php 
+
+$textGenerator = '1234567890USERCODE';
+
+$code= substr(str_shuffle($textGenerator),0,8);
+
+
+?> 
 
                              <div class="form-group">
-                                <label for="re-pass"><i class="zmdi zmdi-panorama-horizontal"></i></label>
-                                <input type="text" name="re_pass" id="re_pass" placeholder="Employee Code"/>
+                                <label for="code"><i class="zmdi zmdi-panorama-horizontal"></i></label>
+                                <input type="text" name="Ucode" value="<?php echo $code;?>" />
                             </div>
 
                             <div class="form-group">
-                                <label for="re-pass"><i class="zmdi zmdi-collection-image-o"></i></label>
-                                <input type="file" name="image" id="re_pass" placeholder="Employee Code"/>
+                                <label><i class="zmdi zmdi-collection-image-o"></i></label>
+                                <input type="file" name="image" accept="image/jpg,image/png,image/jpeg" />
                             </div>
 
                             <div class="form-group">
-                                <label for="re-pass"><i class="zmdi zmdi-panorama-horizontal"></i></label>
-                                <input type="text" name="re_pass" id="re_pass" placeholder="State Code"/>
+                                <label for="code"><i class="zmdi zmdi-panorama-horizontal"></i></label>
+                                <input type="text" name="Scode"  placeholder="State Code"/>
                             </div>
 
                             <div class="form-group">
-                                <label for="re-pass"><i class="zmdi zmdi-panorama-horizontal"></i></label>
-                                <input type="text" name="re_pass" id="re_pass" placeholder="Country Code"/>
+                                <label for="code"><i class="zmdi zmdi-panorama-horizontal"></i></label>
+                                <input type="text" name="Ccode"  placeholder="Country Code"/>
+                            </div> 
+
+
+<?php 
+
+$OTPgenerator = '1234567890EMPLOYEEOTP';
+
+$otp = substr(str_shuffle($OTPgenerator),0,6);
+
+
+?>
+
+                            <div class="form-group" style="display: none;">
+                                <label for="code"><i class="zmdi zmdi-panorama-horizontal"></i></label>
+                                <input type="text" name="otp" value="<?php echo $otp;?>"  />
                             </div>
+
 
 
                             <div class="form-group">
@@ -110,15 +143,48 @@
 
 <?php 
 
+    $username = $_POST['username'];
+    $password = $_POST['pass'];
+    $cnfpassword = $_POST['re_pass'];
+    $DOB = $_POST['date'];
+    $contact = $_POST['Cnumber'];
+    $mail = $_POST['email'];
+    $UserCode = $_POST['Ucode'];
+    $Address = $_POST['Uaddress'];
+    $Scode = $_POST['Scode'];
+    $Ccode = $_POST['Ccode'];
+    $UserOtp = $_POST['otp'];
+
 $targetFolder = 'userimage/';
 $base_address = 'http://localhost/registration_data/';
 $orgFileName = $_FILES['image']['name'];
 $tmpFileName = $_FILES['image']['tmp_name'];
 
+$completeAddress = $base_address.$targetFolder.$orgFileName;
+
 if(isset($_POST['signup']))
 {
     move_uploaded_file($tmpFileName,$targetFolder.$orgFileName);
-}
 
+    if($password == $cnfpassword)
+    {
+    session_start();
+    $_SESSION['activeUser'] = $mail;
+
+     $insertData = mysqli_query($config,"INSERT INTO sign_up(username,password,user_dob,contact_no,user_mail,user_otp,otp_status,address,employee_code,employee_img,state_code,country_code) VALUES('$username','$password','$DOB','$contact','$mail','$UserOtp','Pending','$Address','$UserCode','$completeAddress','$Scode','$Ccode')"); 
+
+       
+
+     if($insertData)
+     {
+        echo "<script>alert('Data and User Image Inserted')</script>";
+        echo "<script>window.location.href='otpverify.php'</script>";
+     }
+     else
+     {
+      echo "<script>alert('Try again')</script>";
+     }
+  }
+}
 
 ?>

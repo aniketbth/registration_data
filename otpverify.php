@@ -1,11 +1,6 @@
 <?php
  session_start();
- if(!isset($_SESSION['activeUser']))
-{   
-  unset($_SESSION['activeUser']);
-  session_destroy();
-  header('location:http://localhostregistration_data/index.php');
-}
+
 
 include('config.php');
 
@@ -70,7 +65,7 @@ button {
             <label>OTP for : <?php echo  $_SESSION['activeUser'];?> </label>   
             <input type="text"  name="opt" required="">  
         
-            <button type="submit" name="verify" style="background-color:whitesmoke;color: black;">Verify Here</button>   
+            <button type="submit" name="verify" >Verify Here</button>   
        
             <input type="checkbox" checked="checked"> Remember me   
             <button type="submit" class="cancelbtn"> Cancel</button>   
@@ -93,11 +88,11 @@ button {
 
         if(mysqli_num_rows($matchOtp)>0)
         {
-            echo "<script>alert'OTP Verified'</script>";
+            echo "<script>alert('OTP Verified')</script>";
         }
         else
         {
-           echo "<script>alert'OTP not found.Please try again'</script>"; 
+           echo "<script>alert('OTP not found.Please try again')</script>"; 
         }
      }
 
