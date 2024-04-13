@@ -8,7 +8,7 @@ $dbname='web_access';
 $config = mysqli_connect($hostname,$username,$password,$dbname);
 if($config)
 {
-	echo " working....";
+	echo " -------";
 }
 else
 {
