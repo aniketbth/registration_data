@@ -69,7 +69,7 @@ button {
 
         <div class="container">   
        
-            <label>OTP for : <?php echo  $_SESSION['loggedInUser'];?> </label>   
+            <label>OTP for : <?php echo $_SESSION['loggedInUser'];?> </label>   
             <input type="text"  name="opt" required="">  
         
             <button type="submit" name="verify" style="background-color:whitesmoke;color: black;">Verify Here</button>   
@@ -86,20 +86,21 @@ button {
 
      <?php
 
-     $OTP = $_POST['opt'];
+    
+    $OTP = $_POST['opt'];
 
-     
+
+
      if(isset($_POST['verify']))
      {
-        $matchOtp = mysqli_query($config,"SELECT * FROM sign_up WHERE user_mail = '{$_SESSION['activeUser']}' AND user_otp = '$OTP'");
-
-        if(mysqli_num_rows($matchOtp)>0)
+        $matchcredentials = mysqli_query($config,"SELECT * FROM sign_up WHERE user_mail ='{$_SESSION['loggedInUser']}' AND  user_otp = '$OTP'");
+        if(mysqli_num_rows($matchcredentials)>0)
         {
-            echo "<script>alert'OTP Verified'</script>";
+            echo "<script>alert('OTP Verified')</script>";
         }
         else
         {
-           echo "<script>alert'OTP not found.Please try again'</script>"; 
+           echo "<script>alert('OTP not found.Please try again')</script>"; 
         }
      }
 

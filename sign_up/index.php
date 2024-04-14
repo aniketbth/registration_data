@@ -51,10 +51,10 @@ include('../config.php');
 <input type="password" class="form-control" name="pass" placeholder="Your Password" >
 </div>
 
-<!-- <div class="form-group last mb-3">
+<div class="form-group last mb-3">
 <label for="password"> Confirm Password</label>
 <input type="password" class="form-control" name="Cpass" placeholder="Enter Your Password Again">
-</div> -->
+</div>
 
 
 
@@ -139,7 +139,7 @@ $otp = substr(str_shuffle($OTPgenerator),0,6);
 <?php
 $UserEmail = $_POST['Umail'];
 $UserPass = $_POST['pass'];
-// $confirmPass =$_POST['Cpass'];
+$confirmPass =$_POST['Cpass'];
 $Username = $_POST['username'];
 $UserDob = $_POST['DOB'];
 $UserContact = $_POST['Cnum'];
@@ -159,32 +159,31 @@ $completeAddress = $base_address.$targetFolder.$orgFileName;
 
 
 if(isset($_POST['submit']))
-
-	 // move_uploaded_file($tmpFileName,$targetFolder.$orgFileName);
  {
+ 	move_uploaded_file($tmpFileName,$targetFolder.$orgFileName);
 	
-	// if($UserPass == $confirmPass)
+	if($UserPass == $confirmPass)
 
-    // {
+    {
 		session_start();
     
 	$_SESSION['loggedInUser'] = $UserEmail;
-	 header('location:otpverify.php');
+	 
 
-		// $insertData = mysqli_query($config,"INSERT INTO sign_up(username,password,user_dob,contact_no,user_mail,user_otp,otp_status,address,employee_code,employee_img,state_code,country_code) VALUES('$Username','$UserPass','$UserDob','$UserContact','$UserEmail','$UserOtp','Pending','$UserAddress','$UserCode','$completeAddress','$UserScode','$UserCcode')"); 
+		$insertData = mysqli_query($config,"INSERT INTO sign_up(username,password,user_dob,contact_no,user_mail,user_otp,otp_status,address,employee_code,employee_img,state_code,country_code) VALUES('$Username','$UserPass','$UserDob','$UserContact','$UserEmail','$UserOtp','Pending','$UserAddress','$UserCode','$completeAddress','$UserScode','$UserCcode')"); 
 	
 		
-        // if($insertData)
-        //  {
-        //   	echo "<script>alert('Data inserted')</script>";
+        if($insertData)
+         {
+          	echo "<script>alert('Data inserted')</script>";
      
-	    //      header('location:session.php');
-        //  }
-        //  else
-        //  {
-        //  	echo "<script>alert('Try again')</script>";
-        //  }
-     // }
+	         header('location:otpverify.php');
+         }
+         else
+         {
+         	echo "<script>alert('Try again')</script>";
+         }
+     }
 }
 
 
