@@ -48,9 +48,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12 col-md-3 position">
-						<!-- <div class="logo">
-							<a href="index.html"><img src="images/logo-1.png" alt="" /></a>
-						</div> -->
+						
 						<div class="social-box-bot clearfix">
 							<ul>
 								<li><a href="#" data-toggle="tooltip" data-placement="top" title="Follow On Facebook"><i class="fa fa-facebook"></i></a></li>
@@ -80,7 +78,6 @@
 							<div class="btn-box">
 								<a href="#" class="btn notify-btn">Notify Me</a>
 								<a href="#" class="btn more-infobtn" data-toggle="modal" data-target="#exampleModalCenter">More Info</a>
-								<a href="sign_up/index.php"  class="btn more-infobtn">Register Here</a>
 							</div>
 							
 						</div>

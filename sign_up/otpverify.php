@@ -1,5 +1,5 @@
 <?php
-include('config.php');
+include('../config.php');
 
  session_start();
  if(!isset($_SESSION['loggedInUser']))
@@ -96,7 +96,10 @@ button {
         $matchcredentials = mysqli_query($config,"SELECT * FROM sign_up WHERE user_mail ='{$_SESSION['loggedInUser']}' AND  user_otp = '$OTP'");
         if(mysqli_num_rows($matchcredentials)>0)
         {
+
+            mysqli_query($config,"UPDATE sign_up SET otp_status = 'Verified'");
             echo "<script>alert('OTP Verified')</script>";
+            echo "<script>window.location.href='../dashboard/index.php'</script>";
         }
         else
         {
